@@ -1,0 +1,17 @@
+{
+  "name": "assignment9",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "casual-browserify": "^1.5.19-2",
+    "cypress": "^4.12.1",
+    "dateformat": "^3.0.3",
+    "sequelize": "^5.21.3"
+  }
+}

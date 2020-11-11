@@ -1,0 +1,13 @@
+{
+    "baseUrl": "https://woo-commerce-ecommerce-qa.apps.openshift.snapfinance.com/",
+    "env": {
+        "profile" : "dev",
+        "db_url" : "postgres://snap:TnTz6oxPE9@snap-dev.cnhgweramxuk.us-west-2.rds.amazonaws.com:5438/snap_dev",
+        "database_connection" : true,
+        "database" : "snap"
+    },
+    "viewportWidth": 1366,
+    "viewportHeight": 768,
+    "integrationFolder": "cypress/applications",
+    "chromeWebSecurity": false
+}

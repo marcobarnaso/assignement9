@@ -1,0 +1,16 @@
+{
+    "incomeType": {
+        "fullTimeJob": "string:FULL_TIME",
+        "partTimeJob": "string:PART_TIME",
+        "selfEmployment": "string:SELF_EMPLOYMENT",
+        "benefits": "string:BENEFITS",
+        "other": "string:OTHER"
+    }, 
+    "paidFrequency": {
+        "weekly": "string:WEEKLY",
+        "biWeekly": "string:BI_WEEKLY",
+        "twiceAMonth": "string:SEMI_MONTHLY",
+        "everyMonth1": "string:MONTHLY",
+        "everyMonth2": "string:MONTHLY_WEEK"
+    }
+}
