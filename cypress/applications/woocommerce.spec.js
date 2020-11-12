@@ -25,7 +25,7 @@ describe('Test shop with Snap in Woocommerce', () => {
             cy.SearchForTire(this.search)
         })
 
-        it('Add product to cart', function () {
+        it('Should Add product to cart', function () {
             cy.SelectAndAddToCart()
         })
 
