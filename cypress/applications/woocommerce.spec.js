@@ -1,16 +1,20 @@
 /// <reference types="Cypress"/>
 const customer = require('../commons/data-fakers/customers-faker').customer('RTO')
+const iframe = require('cypress-iframe')
 
-context('Test shop with Snap in Woocommerce', () => {
+describe('Test shop with Snap in Woocommerce', () => {
+    Cypress.Cookies.defaults({
+        preserve: /^wp_woocommerce_session_.*$/
+    });
 
     before(function () {
+        cy.fixture('address-validation').as('addressValidation')
         cy.fixture('search-products').as('search')
+        cy.fixture('incomeInformation').as('incomeInfo')
+        cy.fixture('banking-information').as('bankingInfo')
     })
 
-    describe('Woo-000 | Test shop and apply with Snap', () => {
-        Cypress.Cookies.defaults({
-            preserve: /^wp_woocommerce_session_.*$/
-        });
+    describe('Woo-000 | Test shop and apply with Snap', function () {
 
         it('Should navigate WooCommerce', function () {
             cy.visit('/')
@@ -29,15 +33,19 @@ context('Test shop with Snap in Woocommerce', () => {
             cy.checkout(customer)
         })
 
-        // it('Should submit the application', function () {
-        //     cy.server()
-        //     cy.route('PUT', 'api/v1/applications/*/submitApplication').as('submit')
-        //     cy.SubmitApplication()
-        //     cy.wait('@submit').its('status').should('eq', 200)
-        // })
+        it('Should fill the Snap Apply form', function () {
+            const fakeIncome = require('../commons/data-fakers/income-faker').income(this.incomeInfo.incomeType.fullTimeJob, this.incomeInfo.paidFrequency.weekly);
+            cy.frameLoaded()
+            cy.iframe().find('[data-e2e="headerLogo"]').should('be.visible')
+            cy.enter().then(function (iframeBody) {
+                cy.applyWithSnap(customer, iframeBody)
+                cy.fillIncome(fakeIncome, iframeBody)
+                cy.identityvalidation(customer, iframeBody)
+                cy.bankingInformation(this.bankingInfo, iframeBody)
+                cy.reviewApplication(iframeBody)
+            })
 
-        // it('Should assert the results page', function () {
-        //     cy.AssertResultsPage()
-        // })
+        })
+
     })
 }) 

@@ -1,0 +1,18 @@
+{
+    "requireValidAddress": false,
+    "addresses": [
+        {
+            "id": 0,
+            "streetAddress": "1985 Nice St",
+            "unit": null,
+            "city": "Salt Lake City",
+            "state": "UT",
+            "zipCode": "84104",
+            "auxZipCode": "2828",
+            "county": "Salt Lake"
+        }
+    ],
+    "maxNumberOfAttempts": "5",
+    "numberOfAttempts": 1,
+    "addressCorrected": false
+}
